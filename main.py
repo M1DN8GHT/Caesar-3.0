@@ -3,6 +3,7 @@ number = 10
 character_list = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 def caesar_cipher(text: str, shift: int) -> str:
+   
     result = ""
 
     for char in text:
@@ -15,19 +16,18 @@ def caesar_cipher(text: str, shift: int) -> str:
     
 
 def caesar_decipher(text: str) -> str:
-    result = ""
     
-    for i in range(62): 
+    for shift in range(62): 
         result = ""   
         for char in secret_message:
             if char in character_list:
-                result += character_list[(character_list.index(char) - i) % 62]
-        else:
-            result += char
+                result += character_list[(character_list.index(char) - shift) % 62]
+            else:
+                result += char
         
-        print(f"Shift {i}: {result}") 
+        print(f"Shift {shift}: {result}") 
     
-hidden = caesar_cipher(secret_message, number)
-print(hidden)
-message = caesar_decipher(hidden)
-print(message)
+hidden_message = caesar_cipher(secret_message, number)
+print(secret_message)
+caesar_decipher(hidden_message)
+
